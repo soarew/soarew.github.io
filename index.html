@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-V2Ray学习" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/22/V2Ray学习/" class="article-date">
+  <time datetime="2019-01-22T03:24:49.000Z" itemprop="datePublished">2019-01-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/22/V2Ray学习/">V2Ray学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>学习目的： 打造个人的专属基础通信网络，理清操作流程，能够根据自己的现实要求选择合适的配置来使用网络。</p>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ol>
+<li><strong>多入口多出口/多协议</strong>支持。一个进程同时支持多个入站协议和出站协议。</li>
+<li><strong>路由可定制</strong>。入站的流量可以按照配置从不同的出口发出。</li>
+<li><strong>多传输载体支持</strong>。每种协议都会有一至多个传输载体可供选择。</li>
+<li><strong>可隐蔽</strong>。部分协议提供的加密手段，可将V2Ray流量与正常网页流量混淆。</li>
+<li><strong>多用户</strong>。大多数入站协议都支持设置多个用户。</li>
+<li><strong>反向代理与多平台支持。</strong></li>
+</ol>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
+<li>在客户端，通过设置入站协议能够接受浏览器等软件的上网请求，通过<strong>设置出站协议和路由</strong>能够选择是代理连接V2Ray服务器或还是直连。</li>
+<li>在服务端，通过设置<strong>入站协议</strong>能够选择协议和新增用户，通过设置出站协议能够过滤某些请求。</li>
+</ol>
+<h3 id="工作机制"><a href="#工作机制" class="headerlink" title="工作机制"></a>工作机制</h3><ol>
+<li><strong>单服务器模式</strong>。V2Ray客户端对流量进行判断，后将所需要转发的请求发送至服务器进行代理上网。支持多台设备和多个协议进行访问。</li>
+<li><strong>桥接模式</strong>。V2Ray客户端将全部请求发送至一台转发服务器，<br>转发服务器对流量进行判断，后将所需要转发的请求发送至服务器进行代理上网。</li>
+</ol>
+<h3 id="Linux服务器安装方法"><a href="#Linux服务器安装方法" class="headerlink" title="Linux服务器安装方法"></a>Linux服务器安装方法</h3><ol>
+<li>使用root权限运行<br> <code>bash &lt;(curl -L -s https://install.direct/go.sh)</code></li>
+<li>安装脚本执行完毕后，配置文件在 <code>/etc/v2ray/config.json</code>处。</li>
+<li>编辑好配置文件后，大多数Linux系统均可以使用<code>service v2ray start|stop|status|reload|restart|force-reload</code> 控制V2Ray的运行。</li>
+</ol>
+<h3 id="配置文件初探"><a href="#配置文件初探" class="headerlink" title="配置文件初探"></a>配置文件初探</h3><p>客户端、服务器的配置文件都是JSON格式的。</p>
+<ol>
+<li><p>一个客户端配置文件的例子。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> "log": &#123;  //日志输出设置</span><br><span class="line"> 	"access": "",</span><br><span class="line"> 	"error": "",</span><br><span class="line"> 	"loglevel": "warning"</span><br><span class="line">  &#125;,</span><br><span class="line"> "inbounds": [ 		//入站连接配置数组，每个大括号包含一个元素</span><br><span class="line"> &#123;</span><br><span class="line">   "port": 1080,  	//入站端口设置</span><br><span class="line">   "listen": "127.0.0.1",  //监听地址，此处地址是回环地址，用于本机中各个应用的交互</span><br><span class="line">   "protocol": "socks",   //入站协议选择</span><br><span class="line">   "sniffing": &#123;      //流量探测</span><br><span class="line">     "enabled": true,    </span><br><span class="line">     "destOverride": [</span><br><span class="line">       "http",</span><br><span class="line">       <span class="string">"tls"</span></span><br><span class="line">     ]</span><br><span class="line">   &#125;,</span><br><span class="line">   "settings": &#123;  //入站协议设定，与使用的协议有关</span><br><span class="line">     "auth": "noauth",</span><br><span class="line">     "udp": true,</span><br><span class="line">     "ip": null,</span><br><span class="line">     "clients": null</span><br><span class="line">   &#125;,</span><br><span class="line">   "streamSettings": null  //此入站协议的底层传输配置</span><br><span class="line">&#125;</span><br><span class="line">  ],</span><br><span class="line">  "outbounds": [  //出站连接配置数组</span><br><span class="line"> &#123;</span><br><span class="line">   "tag": "proxy",   //某出站连接的标识，代理</span><br><span class="line">   "protocol": "vmess",    //出站协议</span><br><span class="line">   "settings": &#123;      //出站协议设定</span><br><span class="line">     "vnext": [</span><br><span class="line">       &#123;</span><br><span class="line">         <span class="attr">"address"</span>: <span class="string">"*.*.*.*"</span>,</span><br><span class="line">         <span class="attr">"port"</span>: <span class="number">28790</span>,</span><br><span class="line">         <span class="attr">"users"</span>: [</span><br><span class="line">           &#123;</span><br><span class="line">             <span class="attr">"id"</span>: <span class="string">"4a8ac1da-971d-439d-ad78-d66e76749793"</span>,</span><br><span class="line">             <span class="attr">"alterId"</span>: <span class="number">0</span>,</span><br><span class="line">             <span class="attr">"email"</span>: <span class="string">"t@t.tt"</span>,</span><br><span class="line">             <span class="attr">"security"</span>: <span class="string">"aes-128-gcm"</span></span><br><span class="line">           &#125;</span><br><span class="line">         ]</span><br><span class="line">       &#125;</span><br><span class="line">     ],</span><br><span class="line">     "servers": null,</span><br><span class="line">     "response": null</span><br><span class="line">   &#125;,</span><br><span class="line">   "streamSettings": &#123; //此出站协议的底层传输配置</span><br><span class="line">     "network": "tcp",</span><br><span class="line">     "security": "",</span><br><span class="line">     "tlsSettings": null,</span><br><span class="line">     "tcpSettings": null,</span><br><span class="line">     "kcpSettings": null,</span><br><span class="line">     "wsSettings": null,</span><br><span class="line">     "httpSettings": null</span><br><span class="line">   &#125;,</span><br><span class="line">   "mux": &#123;  //多路复用设置</span><br><span class="line">     "enabled": true</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> &#123;</span><br><span class="line">   "tag": "direct",  //直连</span><br><span class="line">   "protocol": "freedom",</span><br><span class="line">   "settings": &#123;</span><br><span class="line">     "vnext": null,</span><br><span class="line">     "servers": null,</span><br><span class="line">     "response": null</span><br><span class="line">   &#125;,</span><br><span class="line">   "streamSettings": null,</span><br><span class="line">   "mux": null</span><br><span class="line"> &#125;,</span><br><span class="line"> &#123;</span><br><span class="line">   "tag": "block",   //阻塞</span><br><span class="line">   "protocol": "blackhole",</span><br><span class="line">   "settings": &#123;</span><br><span class="line">     "vnext": null,</span><br><span class="line">     "servers": null,</span><br><span class="line">     "response": &#123;</span><br><span class="line">       "type": "http"</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   "streamSettings": null,</span><br><span class="line">   "mux": null</span><br><span class="line"> &#125;</span><br><span class="line">  ],</span><br><span class="line">  "dns": null, //dns设定</span><br><span class="line">  "routing": &#123;  //路由设定，将入站数据按需求由不同的出站连接发出</span><br><span class="line"> "strategy": "rules",  //？</span><br><span class="line"> "settings": &#123;</span><br><span class="line">   "domainStrategy": "AsIs",  //域名解析策略</span><br><span class="line">   "rules": [   //路由规则数组</span><br><span class="line">     &#123;</span><br><span class="line">       "type": "field",  //规则类型，仅此种</span><br><span class="line">       "port": null,	 //端口范围</span><br><span class="line">       "outboundTag": "direct", //出站协议标识</span><br><span class="line">       "ip": [   		//ip范围数组</span><br><span class="line">         <span class="string">"geoip:private"</span> </span><br><span class="line">       ],</span><br><span class="line">       "domain": null   //域名匹配数组</span><br><span class="line">     &#125;,</span><br><span class="line">     &#123;</span><br><span class="line">       <span class="attr">"type"</span>: <span class="string">"field"</span>,</span><br><span class="line">       <span class="attr">"port"</span>: <span class="literal">null</span>,</span><br><span class="line">       <span class="attr">"outboundTag"</span>: <span class="string">"direct"</span>,</span><br><span class="line">       <span class="attr">"ip"</span>: [</span><br><span class="line">         <span class="string">"geoip:cn"</span></span><br><span class="line">       ],</span><br><span class="line">       <span class="attr">"domain"</span>: <span class="literal">null</span></span><br><span class="line">     &#125;,</span><br><span class="line">     &#123;</span><br><span class="line">       <span class="attr">"type"</span>: <span class="string">"field"</span>,</span><br><span class="line">       <span class="attr">"port"</span>: <span class="literal">null</span>,</span><br><span class="line">       <span class="attr">"outboundTag"</span>: <span class="string">"direct"</span>,</span><br><span class="line">       <span class="attr">"ip"</span>: <span class="literal">null</span>,</span><br><span class="line">       <span class="attr">"domain"</span>: [</span><br><span class="line">         <span class="string">"geosite:cn"</span></span><br><span class="line">       ]</span><br><span class="line">     &#125;</span><br><span class="line">   ]</span><br><span class="line"> &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一个服务器配置文件的例子。</p>
+</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "inbounds": [&#123;  	//入站连接配置数组</span><br><span class="line">    "port": 28790,</span><br><span class="line">    "protocol": "vmess",  </span><br><span class="line">    "settings": &#123;</span><br><span class="line">      "clients": [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"id"</span>: <span class="string">"4a8ac1da-971d-439d-ad78-d66e76749793"</span>,</span><br><span class="line">          <span class="attr">"level"</span>: <span class="number">1</span>,</span><br><span class="line">          <span class="attr">"alterId"</span>: <span class="number">64</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;],</span><br><span class="line">  "outbounds": [&#123;    //出站连接协议数组</span><br><span class="line">    "protocol": "freedom",</span><br><span class="line">    "settings": &#123;&#125;</span><br><span class="line">  &#125;,&#123;</span><br><span class="line">    "protocol": "blackhole",</span><br><span class="line">    "settings": &#123;&#125;,</span><br><span class="line">    "tag": "blocked"</span><br><span class="line">  &#125;],</span><br><span class="line">  "routing": &#123;</span><br><span class="line">    "rules": [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">"type"</span>: <span class="string">"field"</span>,</span><br><span class="line">        <span class="attr">"ip"</span>: [<span class="string">"geoip:private"</span>],</span><br><span class="line">        <span class="attr">"outboundTag"</span>: <span class="string">"blocked"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="配置文件格式"><a href="#配置文件格式" class="headerlink" title="配置文件格式"></a>配置文件格式</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"log"</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">"api"</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">"dns"</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">"stats"</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">"routing"</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">"policy"</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">"reverse"</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">"inbounds"</span>: [],</span><br><span class="line">  <span class="attr">"outbounds"</span>: [],</span><br><span class="line">  <span class="attr">"transport"</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="常用协议详解"><a href="#常用协议详解" class="headerlink" title="常用协议详解"></a>常用协议详解</h3><ol>
+<li><p><strong>Freedom</strong>：出站协议，能够向任意网络发送数据。</p>
+<ul>
+<li><p>使用配置实例：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">"outbounds": [&#123;		//出站配置连接数组</span><br><span class="line">   "tag": "direct",		//出站标识</span><br><span class="line">   "protocol": "freedom",    //协议声明</span><br><span class="line">    "settings": &#123;				//协议设置</span><br><span class="line">        "domainStrategy": "AsIs",</span><br><span class="line">        "redirect": "127.0.0.1:3366",</span><br><span class="line">        "userLevel": 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>协议设置说明：</p>
+<ul>
+<li><code>domainStrategy</code> ：域名策略。可选值 <code>&quot;AsIs&quot; (默认值)| &quot;UseIP&quot; | &quot;UseIPv4&quot; | &quot;UseIPv6&quot;</code>。通常默认即可。<ul>
+<li><code>&quot;AsIs&quot;</code> : 直接向此域名发出连接。</li>
+<li><code>&quot;UseIP&quot;</code>: 将域名解析为 IP 之后再建立连接。<ul>
+<li><code>&quot;UseIPv4&quot;</code>:  将域名解析为 IPv4 地址之后再建立连接。</li>
+<li><code>&quot;UseIPv6&quot;</code>:  将域名解析为 IPv6 地址之后再建立连接。</li>
+<li>解析时使用 V2Ray 内建 DNS 服务器。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>redirect</code> :  强制地址转发。通常默认即可。</p>
+</li>
+<li><p>客户端使用此协议出站，将直连上网。</p>
+</li>
+<li><p>服务器使用此协议出站，即开启代理。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>VMess</strong>：入站/出站协议。是一个依赖系统时间的加密传输协议。</p>
+<ul>
+<li><p>客户端使用此协议出站，即连接服务器上网。配置实例如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">"outbounds": [&#123;			//出站配置连接数组</span><br><span class="line">    "tag": "proxy",			//出站标识</span><br><span class="line">    "protocol": "vmess",		//协议声明</span><br><span class="line">    "settings": &#123;</span><br><span class="line">      "vnext": [&#123;			//服务器配置数组，多配置即可负载均衡</span><br><span class="line">        "address": "1.2.3.4", // 服务器地址</span><br><span class="line">        "port": 29998,  // 服务器端口</span><br><span class="line">        "users": [&#123; "id": "1fea096c-1c79-11e9-858d-1a1e577886b7" &#125;]</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>服务器使用此协议入站，即可接收客户机使用VMess协议上网的请求。配置实例如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">"inbounds": [&#123;</span><br><span class="line">    "port": 33106,</span><br><span class="line">    "protocol": "vmess",</span><br><span class="line">    "settings": &#123;</span><br><span class="line">      "clients": [&#123;</span><br><span class="line">          "id": "a212ef19-d40b-41c3-ab82-88683df95e3b",</span><br><span class="line">          "level": 1,</span><br><span class="line">          "alterId": 64</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>协议设置说明：</p>
+<ul>
+<li><code>users</code>/<code>clients</code> :  用户数组。每组由<code>id</code>、<code>alterId</code>、<code>security</code>、<code>level</code>四个属性组成。<ul>
+<li><code>id</code>:  VMess 用户的主 ID。是一个合法的UUID(通用唯一识别码)。<ul>
+<li>Linux 系统可以使用<code>uuid</code>程序获得。</li>
+<li>也可以使用<a href="https://1024tools.com/uuid?" target="_blank" rel="noopener">在线网站</a>生成UUID。</li>
+</ul>
+</li>
+<li><code>alterId</code>:  VMess 用户的主 ID的额外ID个数。默认为0，最大为65536。推荐值为16。</li>
+<li><code>security</code>: 加密方式。<ul>
+<li>支持加密算法如下：<ul>
+<li><code>aes-128-gcm</code> (推荐在电脑上使用)</li>
+<li><code>chacha20-poly1305</code> (推荐在移动端使用)</li>
+</ul>
+</li>
+<li>推荐使用默认值<code>auto</code>，这样服务器可以自动适配客户端选择的加密方法 。</li>
+</ul>
+</li>
+<li><code>level</code>：用户等级</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>使用此协议时，要求客户机与服务器的UTC时间相差不能超过90秒钟。</p>
+<ul>
+<li><p>Linux系统可以使用命令 <code>date -u &quot;+%Y-%m-%dT%H:%M:%SZ&quot;</code> 查看当前UTC时间。</p>
+</li>
+<li><p>Windows系统可以通过运行Powershell的命令查看</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\WX&gt; <span class="variable">$a</span> = <span class="built_in">Get-Date</span></span><br><span class="line">PS C:\Users\WX&gt; <span class="variable">$a</span>.ToUniversalTime()</span><br><span class="line"><span class="number">2019</span>年<span class="number">1</span>月<span class="number">20</span>日 <span class="number">12</span>:<span class="number">39</span>:<span class="number">09</span>   //实例输出</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="常用传输方式详解"><a href="#常用传输方式详解" class="headerlink" title="常用传输方式详解"></a>常用传输方式详解</h3><blockquote>
+<p>传输层，处于应用层外部，负责包装应用层协议的数据传输方式。此处的传输方式设置必须是服务器和客户端一样的，否则连接无法建立。</p>
+</blockquote>
+<ol>
+<li><p>TCP传输控制协议。这是V2Ray默认的传输方式。</p>
+</li>
+<li><p>QUIC快速UDP网络连接。由 Google 提出的使用 UDP 进行多路并发传输的协议。示例配置如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"tag"</span>: <span class="string">"quic"</span>,</span><br><span class="line">    "port": "28792-40000",		//动态端口范围</span><br><span class="line">    "protocol": "vmess",</span><br><span class="line">    "settings": &#123;</span><br><span class="line">      "defaults": &#123;</span><br><span class="line">          "level": 1,</span><br><span class="line">          "alterId": 16</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    "allocate": &#123;</span><br><span class="line">      "strategy": "random",	  //端口分配策略</span><br><span class="line">      "concurrency": 2,		  //随机端口数量</span><br><span class="line">      "refresh": 1			//端口刷新间隔</span><br><span class="line">    &#125;,</span><br><span class="line">    "streamSettings": &#123;		//传输协议设定</span><br><span class="line">      "network": "quic",   //指定QUIC</span><br><span class="line">      "security": "none",  //传输层加密方式</span><br><span class="line">      "quicSettings": &#123;</span><br><span class="line">        "security": "none",	//QUIC数据包加密方式</span><br><span class="line">        "key": "",</span><br><span class="line">        "header": &#123;			//数据包伪装头部设置</span><br><span class="line">          "type": "utp"</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>传输协议设定说明：</p>
+<ul>
+<li><p>network指定协议名称。</p>
+</li>
+<li><p>第一个security是传输协议设定，需设定为none，因为使用quic时服务器会自动指定一个证书开启tls。</p>
+</li>
+<li><p>第二个security是QUIC数据包加密方式，可用选项有</p>
+<ul>
+<li><code>aes-128-gcm</code> (推荐在电脑上使用)</li>
+<li><code>chacha20-poly1305</code> (推荐在移动端使用)</li>
+<li><code>none</code></li>
+</ul>
+</li>
+<li><p>header是数据包头部伪装设置，可供type使用的值有</p>
+<ul>
+<li><code>&quot;none&quot;</code>: 默认值</li>
+<li><code>&quot;srtp&quot;</code>: 伪装成 SRTP 数据包，会被识别为视频通话数据（如 FaceTime）。</li>
+<li><code>&quot;utp&quot;</code>: 伪装成 uTP 数据包，会被识别为 BT 下载数据。</li>
+<li><code>&quot;wechat-video&quot;</code>: 伪装成微信视频通话的数据包。</li>
+<li><code>&quot;dtls&quot;</code>: 伪装成 DTLS 1.2 数据包。</li>
+<li><code>&quot;wireguard&quot;</code>: 伪装成 WireGuard 数据包。(并不是真正的 WireGuard 协议)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="搭配配置组合"><a href="#搭配配置组合" class="headerlink" title="搭配配置组合"></a>搭配配置组合</h3><ol>
+<li>代理使用VMess+TCP/KCP主端口和VMess+QUIC动态端口，境内地址直连</li>
+<li>代理使用VMess+TCP+TLS加密</li>
+<li>代理使用VMess</li>
+</ol>
+<h3 id="个人配置列举"><a href="#个人配置列举" class="headerlink" title="个人配置列举"></a>个人配置列举</h3><p>代理使用VMess+TCP/KCP主端口和VMess+QUIC动态端口，境内地址直连</p>
+<p><em>服务器配置</em></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "inbounds": [&#123;					//入站连接数组</span><br><span class="line">    "port": 39942,					//端口设置</span><br><span class="line">    "protocol": "vmess",			//协议指定</span><br><span class="line">    "settings": &#123;					//协议具体设置</span><br><span class="line">      "clients": [					//用户设置</span><br><span class="line">        &#123;</span><br><span class="line">          "id": "8273bd6a-f649-4fc5-9198-e76f5b4bc9f7",			//用户主id设置</span><br><span class="line">          "level": 1,				//用户等级设置</span><br><span class="line">          "alterId": 16				//用户额外id设置	</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      "detour": &#123;					//接下来使用的入站连接设置</span><br><span class="line">		"to": "q"					//接下来使用的入站连接指定</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    "streamSettings": &#123;				//传输协议设置</span><br><span class="line">      "network": "kcp"				//传输协议指定</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    "tag": "q",						//入站连接名称指定</span><br><span class="line">    "port": "28792-39941",			//动态端口设置</span><br><span class="line">    "protocol": "vmess",			</span><br><span class="line">    "settings": &#123;</span><br><span class="line">      "defaults": &#123;					//可选，clients 的默认配置。仅在配合detour时有效。</span><br><span class="line">      "level": 1,</span><br><span class="line">      "alterId": 16</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    "allocate": &#123;					//动态端口分配设置</span><br><span class="line">      "strategy": "random",			//分配策略</span><br><span class="line">      "concurrency": 2,				//同时开放个数</span><br><span class="line">      "refresh": 1					//刷新间隔</span><br><span class="line">    &#125;,</span><br><span class="line">    "streamSettings": &#123;				//传输协议设置</span><br><span class="line">      "network": "quic",			//传输协议QUIC指定</span><br><span class="line">      "security": "none",			//传输层加密方式</span><br><span class="line">      "quicSettings": &#123;				//QUIC设置</span><br><span class="line">		"security": "none",			//QUIC包加密方式</span><br><span class="line">		"key": "",					//加密密钥</span><br><span class="line">		"header": &#123;					//混淆头</span><br><span class="line">	  	  "type": "utp"														     </span><br><span class="line">   	&#125;  </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]  ,</span><br><span class="line">  "outbounds": [&#123;					//出站连接配置</span><br><span class="line">    "protocol": "freedom",			//从本机联网的协议</span><br><span class="line">    "settings": &#123;&#125;</span><br><span class="line">  &#125;,&#123;</span><br><span class="line">    "protocol": "blackhole",		//阻断连接的协议</span><br><span class="line">    "settings": &#123;&#125;,</span><br><span class="line">    "tag": "blocked"</span><br><span class="line">  &#125;],</span><br><span class="line">  "routing": &#123;						//路由设置</span><br><span class="line">    "rules": [						//规则设置</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">"type"</span>: <span class="string">"field"</span>,			</span><br><span class="line">        "ip": ["geoip:private"],	//覆盖所有内部地址</span><br><span class="line">        "outboundTag": "blocked"	//阻断连接</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/22/V2Ray学习/" data-id="cjr776oqq0000a3vg5ihphdvz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/22/V2Ray学习/">V2Ray学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
